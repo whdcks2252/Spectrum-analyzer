@@ -13,7 +13,7 @@ namespace DabinSA.Model
 
         public ChartRepository() {
 
-            for (double i = 0; i < 2002; i++)
+            for (double i = 0; i < 6000; i++)
             {
                 ChartModel chart = new ChartModel() { Frequency = i };
                 ChartDataRepository.Add(chart);

@@ -28,7 +28,7 @@
                     <TextBlock Foreground="#FF4B8FFD" FontWeight="Bold"  FontSize="15" TextAlignment="Center">DabinSystems</TextBlock>
                     <TextBlock Foreground="White" FontSize="15" Text="{Binding Time}" TextAlignment="Center" ></TextBlock>
                 </StackPanel>
-                <Button  Command="{Binding SgBT}" Margin="10,0,0,0" BorderThickness="3" Background="Black" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"  BorderBrush="#8C8C8C" Height="40" Width="200"  Content="SG"></Button>
+                <Button  Command="{Binding SgBT}" Margin="10,0,0,0" BorderThickness="3" Background="Black" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"  BorderBrush="#8C8C8C" Height="40" Width="200"  Content="Signal Generators"></Button>
             </StackPanel>
         </Grid>
         

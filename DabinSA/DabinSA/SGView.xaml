@@ -5,9 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DabinSA"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="500">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Height="80" Margin="255,178,0,0" VerticalAlignment="Top" Width="206"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock  Grid.ColumnSpan="2" FontSize="30" >Signal Generators</TextBlock>
 
+
+        <TextBlock Grid.Row="1" FontSize="15" Margin="8,0,0,68" HorizontalAlignment="Left" Width="55" > Mode :</TextBlock>
+        <ComboBox Grid.Row="1" Margin="70,0,58,82" Grid.ColumnSpan="2" ItemsSource="{Binding ModeList}" SelectedItem="{Binding SelectCombo}" />
+
+        <TextBlock Grid.Row="1"   FontSize="15"  Grid.RowSpan="2" Margin="7,65,27,107"   >Frequency :</TextBlock>
+        <TextBox TextAlignment="Right" FontSize="15" Grid.ColumnSpan="3" Margin="98,70,118,14" Grid.Row="1" Text="{Binding FreTxt, UpdateSourceTrigger=PropertyChanged}"   />
+        <TextBlock FontSize="10" Grid.Column="2" Margin="12,73,68,8" Grid.Row="1">(MHz)</TextBlock>
+
+        <TextBlock  FontSize="15" Margin="10,10,32,66" Grid.Row="2" >Attenuator :</TextBlock>
+        <TextBox TextAlignment="Right" FontSize="15" Grid.ColumnSpan="3" Margin="98,10,118,73" Grid.Row="2" Text="{Binding AmpTxt, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock FontSize="10" Grid.Column="2" Margin="12,14,75,73" Grid.Row="2">(dB)</TextBlock>
+
+        <Button Grid.Column="2" Margin="62,27,62,46" Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding GenerateBT}">Generate</Button>
     </Grid>
 </UserControl>

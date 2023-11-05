@@ -12,6 +12,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -51,9 +52,19 @@ namespace DabinSA.ViewModel
         private SubViewSouce subViewSouce = new SubViewSouce();
         private ChartRepository chartRepository;
 
+      
+
         public MainViewModel(ChartRepository chartRepository)
         { this.chartRepository= chartRepository;
-            Time = "10:10:10";
+           
+            //data set
+            CenterFre = "3650";
+            StartFre = "3575";
+            StopFre = "3725";
+            Attenuator= "0";
+            Offset = "0";
+            Span = "150";
+
             PlotModelmp = new PlotModel();
             SetPlotModel();            
             task();
@@ -63,14 +74,6 @@ namespace DabinSA.ViewModel
 
             SourceCollection = subViewSouce.fre.View;
             SubMenuTxt = "Frequency";
-
-            //data set
-            CenterFre = "3650.01";
-            StartFre = "3575.01";
-            StopFre = "3725.01(MHz)";
-            Attenuator= "0";
-            Offset = "0";
-            Span = "150";
 
             //Inforset
             SetInfoCenterFre(CenterFre);
@@ -114,22 +117,24 @@ namespace DabinSA.ViewModel
         }
         private async Task task()
         {
+
             await Task.Run(async () =>
             {
 
                 while (true)
                 {
+                    
                     await Task.Delay(100);
                     chartRepository.save(RangeStart,RangeStop);
                     Setchart();
                     ChageTime();
-                    Console.WriteLine("aa");
                 }
 
             });
         }
         private void Setchart()
         {
+
             PlotModelmp.Series.Clear();
            
             var lineSeries = new LineSeries
@@ -138,11 +143,24 @@ namespace DabinSA.ViewModel
 
             };
 
-             Random random = new Random();
+           
 
-            foreach (var data in chartRepository.getDatas())
-                 lineSeries.Points.Add(new DataPoint(data.Frequency, data.Value));
+            var data = chartRepository.getDatas();
+            int start = Convert.ToInt32(StartFre);
+            int stop = Convert.ToInt32(StopFre);
+
+
+            for (int i = start; i < stop + 1; i++)
+                {
+
+                    lineSeries.Points.Add(new DataPoint(data[i].Frequency, data[i].Value));
+
+                }
             
+   
+            //foreach (var data in chartRepository.getDatas())
+            //     lineSeries.Points.Add(new DataPoint(data.Frequency, data.Value));
+
             PlotModelmp.Series.Add(lineSeries);
             PlotModelmp.InvalidatePlot(true);// 바인딩 즉시업데이트 트리거
         }

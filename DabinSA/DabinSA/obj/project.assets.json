@@ -217,25 +217,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\seque\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\whdck\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\seque\\OneDrive\\바탕 화면\\test\\DabinSA\\DabinSA\\DabinSA.csproj",
+      "projectUniqueName": "C:\\Users\\whdck\\Desktop\\스팩트럼\\DabinSA\\DabinSA\\DabinSA.csproj",
       "projectName": "DabinSA",
-      "projectPath": "C:\\Users\\seque\\OneDrive\\바탕 화면\\test\\DabinSA\\DabinSA\\DabinSA.csproj",
-      "packagesPath": "C:\\Users\\seque\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\seque\\OneDrive\\바탕 화면\\test\\DabinSA\\DabinSA\\obj\\",
+      "projectPath": "C:\\Users\\whdck\\Desktop\\스팩트럼\\DabinSA\\DabinSA\\DabinSA.csproj",
+      "packagesPath": "C:\\Users\\whdck\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\whdck\\Desktop\\스팩트럼\\DabinSA\\DabinSA\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\seque\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\whdck\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0-windows"
@@ -292,7 +292,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

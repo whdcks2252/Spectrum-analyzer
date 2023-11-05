@@ -34,3 +34,39 @@ C:\Users\seque\OneDrive\바탕 화면\test\DabinSA\DabinSA\obj\Debug\net7.0-wind
 C:\Users\seque\OneDrive\바탕 화면\test\DabinSA\DabinSA\obj\Debug\net7.0-windows\Cal.baml
 C:\Users\seque\OneDrive\바탕 화면\test\DabinSA\DabinSA\obj\Debug\net7.0-windows\SGView.g.cs
 C:\Users\seque\OneDrive\바탕 화면\test\DabinSA\DabinSA\obj\Debug\net7.0-windows\SGView.baml
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\bin\Debug\net7.0-windows\DabinSA.exe
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\bin\Debug\net7.0-windows\DabinSA.deps.json
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\bin\Debug\net7.0-windows\DabinSA.runtimeconfig.json
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\bin\Debug\net7.0-windows\DabinSA.dll
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\bin\Debug\net7.0-windows\DabinSA.pdb
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\bin\Debug\net7.0-windows\OxyPlot.dll
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\bin\Debug\net7.0-windows\OxyPlot.Wpf.dll
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\bin\Debug\net7.0-windows\OxyPlot.Wpf.Shared.dll
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA.csproj.AssemblyReference.cache
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\Styles.baml
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\Cal.g.cs
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\MainWindow.g.cs
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\Modal.g.cs
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\SGView.g.cs
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\App.g.cs
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA_MarkupCompile.cache
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA_MarkupCompile.lref
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\App.baml
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\Cal.baml
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\MainWindow.baml
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\Modal.baml
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\SGView.baml
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA.g.resources
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA.AssemblyInfoInputs.cache
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA.AssemblyInfo.cs
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA.csproj.CoreCompileInputs.cache
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA.csproj.CopyComplete
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA.dll
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\refint\DabinSA.dll
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA.pdb
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\DabinSA.genruntimeconfig.cache
+C:\Users\whdck\Desktop\스팩트럼\DabinSA\DabinSA\obj\Debug\net7.0-windows\ref\DabinSA.dll

@@ -159,7 +159,7 @@ namespace DabinSA
         {
             int span = int.Parse(mainViewModel.Span);
             mainViewModel.StartFre = (tx - (span / 2)).ToString();
-            mainViewModel.StopFre = (tx + (span / 2)).ToString() +" (MHz)";
+            mainViewModel.StopFre = (tx + (span / 2)).ToString();
             
         }
 
@@ -168,7 +168,7 @@ namespace DabinSA
             int span = int.Parse(mainViewModel.Span);
             int centerFre= Convert.ToInt32(mainViewModel.CenterFre);
             mainViewModel.StartFre = (centerFre - (span / 2)).ToString();
-            mainViewModel.StopFre = (centerFre + (span / 2)).ToString() + " (MHz)";
+            mainViewModel.StopFre = (centerFre + (span / 2)).ToString();
 
 
         }
