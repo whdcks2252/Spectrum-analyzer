@@ -44,6 +44,8 @@
                 <Button Command="{Binding CalBT}" CommandParameter="3" Grid.Row="0" Grid.Column="2" FontSize="18" BorderThickness="0" Margin="2,1,1,1" Background="WhiteSmoke">3</Button>
 
                 <Button Command="{Binding CalBT}" CommandParameter="0" Grid.Row="3" Grid.Column="1" FontSize="18" BorderThickness="0" Margin="2,1,1,1" Background="WhiteSmoke">0</Button>
+                <Button Command="{Binding CalBT2}" Grid.Row="3" Grid.Column="0" FontSize="18" BorderThickness="0" Margin="2,1,1,1" Background="WhiteSmoke">+/-</Button>
+
                 <Button Command="{Binding CommandBT}" Grid.Row="5" Grid.Column="3" Background="White" FontSize="18" BorderThickness="0" Margin="2,1,1,1" >Enter</Button>
 
 

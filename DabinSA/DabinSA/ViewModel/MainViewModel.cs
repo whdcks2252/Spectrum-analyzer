@@ -2,20 +2,26 @@
 using DabinSA.ViewModel.Commands;
 using DabinSA.ViewModel.ViewSouce;
 using OxyPlot;
+using OxyPlot.Annotations;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Annotations;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Shapes;
+using System.Xml.Schema;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace DabinSA.ViewModel
@@ -48,11 +54,18 @@ namespace DabinSA.ViewModel
 
         private ICommand sgBT;
         private ICommand chageSASubMenu;
+        private ICommand markerCommand;
         private PlotModel plotModelImp;
         private SubViewSouce subViewSouce = new SubViewSouce();
         private ChartRepository chartRepository;
+        public static List<Marker> markers= new List<Marker>();
 
-      
+        private bool m1;
+        private bool m2;
+        private bool m3;
+        private bool m4;
+        private bool t1;
+
 
         public MainViewModel(ChartRepository chartRepository)
         { this.chartRepository= chartRepository;
@@ -66,6 +79,20 @@ namespace DabinSA.ViewModel
             Span = "150";
 
             PlotModelmp = new PlotModel();
+
+            for(int i=0; i < 4; i++)
+            {
+                Marker marker1 = new Marker() { X=  int.Parse(CenterFre),Select=1};
+                Marker marker2 = new Marker() { X = int.Parse(CenterFre), Select = 2 };
+                Marker marker3 = new Marker() { X = int.Parse(CenterFre),Select = 3 };
+                Marker marker4 = new Marker() { X = int.Parse(CenterFre),Select = 4 };
+                markers.Add(marker1);
+                markers.Add(marker2);
+                markers.Add(marker3);
+                markers.Add(marker4);
+            }
+
+
             SetPlotModel();            
             task();
 
@@ -87,6 +114,9 @@ namespace DabinSA.ViewModel
             SubButtonCommand = new SubMenuBTCommand(this);
 
             this.chartRepository = chartRepository;
+
+            SelectMakerUI = Visibility.Collapsed;
+            MakerViewModel = new SelectMakerViewModel(this);
         }
 
         public void SetPlotModel()
@@ -125,6 +155,7 @@ namespace DabinSA.ViewModel
                 {
                     
                     await Task.Delay(100);
+                    SetMarker();
                     chartRepository.save(RangeStart,RangeStop);
                     Setchart();
                     ChageTime();
@@ -132,6 +163,29 @@ namespace DabinSA.ViewModel
 
             });
         }
+
+        private void SetMarker()
+        {
+            PlotModelmp.Annotations.Clear();
+            foreach (Marker marker in markers)
+            {
+                if (marker.CheckMarker == true)
+                {
+                    var annotation = new LineAnnotation();
+                    annotation.Color = OxyColors.Red;
+                    annotation.LineStyle = LineStyle.Solid;
+                    annotation.StrokeThickness = 1;
+                    annotation.X = marker.X;
+                    annotation.Type = LineAnnotationType.Vertical;
+                    annotation.Text = marker.Select.ToString();
+                    annotation.TextColor = OxyColors.Yellow;
+
+
+                    PlotModelmp.Annotations.Add(annotation);
+                }
+            }
+        }
+
         private void Setchart()
         {
 
@@ -172,6 +226,11 @@ namespace DabinSA.ViewModel
 
         }
 
+        public ChartRepository GetChartRepository()
+        {
+            return chartRepository;
+        }
+
         public PlotModel PlotModelmp { get; set; }
         public CalViewModel CalViewModel { get; set; }
         public SGViewModel SGViewModel { get; set; }
@@ -199,9 +258,22 @@ namespace DabinSA.ViewModel
 
             }
         }
-
+        //마커and 트레이스
+        public ICommand MarkerCommand
+        {
+            get
+            {
+                if (markerCommand == null)
+                {
+                    markerCommand = new RelayCommand<object>(param => CreateMarkerTrace(param), null);
+                }
+                return markerCommand;
+            }
+        }
+        //submenuBT
         public ICommand SubButtonCommand { get;set; }
 
+        //SG
         public ICommand SgBT
         {
             get
@@ -400,6 +472,144 @@ namespace DabinSA.ViewModel
             IsSGModalOpen = true;
         }
 
+        public bool M1
+        {
+            get => m1;
+            set
+            {
+                m1 = value;
+                OpPropertyChanged("M1");
+            }
+        }
+        public bool M2
+        {
+            get => m2;
+            set
+            {
+                m2 = value;
+                OpPropertyChanged("M2");
+            }
+        }
+        public bool M3
+        {
+            get => m3;
+            set
+            {
+                m3 = value;
+                OpPropertyChanged("M3");
+            }
+        }
+
+        public bool M4
+        {
+            get => m4;
+            set
+            {
+                m4 = value;
+                OpPropertyChanged("M4");
+            }
+        }
+        public bool T1
+        {
+            get => t1;
+            set
+            {
+                t1 = value;
+                OpPropertyChanged("T1");
+            }
+        }
+
+        private int total;
+        private int markFlag1;
+        private int markFlag2;
+        private int markFlag3;
+        private int markFlag4;
+        public void CreateMarkerTrace(object parameter)
+        {
+
+            if (parameter.ToString() == "M1")
+            {
+                if (M1 == true)
+                {
+                    markers[0].CheckMarker = true;
+                    markers[0].Select = 1;
+
+                }
+                else if (M1 == false)
+                {
+                    markers[0].CheckMarker = false;
+
+                }
+
+            }
+            if (parameter.ToString() == "M2")
+            {
+                if (M2 == true)
+                {
+                    markers[1].CheckMarker = true;
+                    markers[1].Select = 2;
+
+                }
+                else if (M2 == false)
+                {
+
+                    markers[1].CheckMarker = false;
+
+                }
+            }
+            if (parameter.ToString() == "M3")
+            {
+                if (M3 == true)
+                {
+                    markers[2].CheckMarker = true;
+                    markers[2].Select = 3;
+
+                }
+                else if (M3 == false)
+                {
+
+                    markers[2].CheckMarker = false;
+
+                }
+            }
+            if (parameter.ToString() == "M4")
+            {
+                if (M4 == true)
+                {
+                    markers[3].CheckMarker = true;
+                    markers[3].Select = 4;
+
+                }
+                else if (M4 == false)
+                {
+
+                    markers[3].CheckMarker = false;
+
+                }
+            }
+            if (parameter.ToString() == "T1")
+            {
+
+            }
+
+           
+            // Create a PointAnnotation for a specific point
+            //var annotation2 = new PointAnnotation
+            //{
+            //    X = int.Parse(centerFre), // X-coordinate of the annotation
+            //    Y = -20, // Y-coordinate of the annotation
+            //    Text = "1" // Annotation text
+            //};
+
+            //annotation2.Shape = MarkerType.Star;
+            //annotation2.TextColor = OxyColors.Yellow;
+            //// Add the annotation to the PlotModel's Annotations collection
+
+
+            //PlotModelmp.Annotations.Add(annotation2);
+
+        }
+
         public void SwitchViews(object parameter)
         {
             switch (parameter)
@@ -466,7 +676,62 @@ namespace DabinSA.ViewModel
             SGAmp = "SGAttenuator : " + st + " (dB)";
 
         }
-      
+        private Visibility stack { get; set; }
+        public Visibility Stack
+        {
+            get { return stack; }
+            set
+            {
+                if (stack != value)
+                {
+                    stack = value;
+                    OpPropertyChanged("Stack");
+                }
+            }
+        }
+        private SelectMakerViewModel makerViewModel;
+        public SelectMakerViewModel MakerViewModel {
+            get { return makerViewModel; }
+            set
+            {
+                makerViewModel = value;
+                OpPropertyChanged("MakerViewModel");
+            }
+        }
+        private Visibility selectMakerUI { get; set; }
+        public Visibility SelectMakerUI
+        {
+            get { return selectMakerUI; }
+            set
+            {
+                if (selectMakerUI != value)
+                {
+                    selectMakerUI = value;
+                    OpPropertyChanged("SelectMakerUI");
+                }
+            }
+        }
+
+
+        private ICommand command;
+        public ICommand Command
+        {
+            get
+            {
+                if (command == null)
+                {
+                    command = new RelayCommand<object>(param => show(), null);
+                }
+                return command;
+            }
+        }
+
+        private void show()
+        {
+
+            SelectMakerUI = System.Windows.Visibility.Collapsed;
+            Stack = System.Windows.Visibility.Visible;
+        }
 
     }
 }

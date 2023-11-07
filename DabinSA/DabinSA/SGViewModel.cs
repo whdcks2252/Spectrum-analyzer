@@ -1,4 +1,5 @@
-﻿using DabinSA.ViewModel;
+﻿using DabinSA.Model;
+using DabinSA.ViewModel;
 using DabinSA.ViewModel.Commands;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,8 @@ namespace DabinSA
         private MainViewModel mainViewModel;
         public SGViewModel(MainViewModel mainViewModel)
         {
-            this.mainViewModel = mainViewModel; 
+            this.mainViewModel = mainViewModel;
+            SelectCombo = ModeList[0];
         }
 
 
@@ -56,6 +58,27 @@ namespace DabinSA
             }
         }
 
+        private bool sGFreTrue;
+        public bool SGFreTrue {
+            get { return sGFreTrue; }
+            set
+            {
+                sGFreTrue = value;
+                OpPropertyChanged("SGFreTrue");
+            }
+        }
+
+        private bool sGAmpTrue;
+
+        public bool SGAmpTrue {
+            get { return sGAmpTrue; }
+            set
+            {
+                sGAmpTrue = value;
+                OpPropertyChanged("SGAmpTrue");
+            }
+        }
+
         public List<string> ModeList { get; set; } = new List<string>()
         {
             "SG",
@@ -64,29 +87,85 @@ namespace DabinSA
 
         };
 
-        public string SelectCombo { get; set; }
+        private string selectCombo;
+        public string SelectCombo {
+            get { return selectCombo; }
+            set
+            {
+                selectCombo = value;
+                if (value == "SG")
+                {
+                    SGFreTrue = true;
+                    SGAmpTrue = true;
+
+                }
+                else
+                {
+                    SGFreTrue = false;
+                    SGAmpTrue = false;
+
+                }
+                OpPropertyChanged("SelectCombo");
+            }
+        } 
 
         private void Generate()
         {
 
             if (SelectCombo == "SG")
             {
-                MessageBox.Show( SelectCombo);
+                try
+                {
+                    if(int.Parse(FreTxt)>5998|| int.Parse(FreTxt)<1|| int.Parse(AmpTxt)>-10)
+                    {
+                        FreTxt = "";
+                        AmpTxt = "";
+                        throw new Exception();
+                    }
+                    ChartModel chartModel = new ChartModel
+                    {
+                        Frequency = double.Parse(FreTxt),
+                        Value = int.Parse(AmpTxt)
+                    };
+                    mainViewModel.GetChartRepository().Mode = "SG";
+                    mainViewModel.GetChartRepository().GeneratedSignal(chartModel);
+                    mainViewModel.SetInfoSGmode(SelectCombo);
+                    mainViewModel.SetInfoSGFrequency(FreTxt);
+                    mainViewModel.SetInfSGAmp(AmpTxt);
 
+                    FreTxt = "";
+                    AmpTxt = "";
+                    mainViewModel.IsSGModalOpen = false;
+                }
+                catch (Exception ex) { MessageBox.Show("범위 1~5998(MHz)"); }
             }
             if (SelectCombo=="LTE")
             {
-                MessageBox.Show( SelectCombo);
+
+                mainViewModel.GetChartRepository().Mode = "LTE";
+                mainViewModel.GetChartRepository().GeneratedSignal(null);
+                mainViewModel.SetInfoSGmode(SelectCombo);
+                mainViewModel.SetInfoSGFrequency("--");
+                mainViewModel.SetInfSGAmp("--");
+                FreTxt = "";
+                AmpTxt = "";
+                mainViewModel.IsSGModalOpen = false;
+
 
             }
             if (SelectCombo == "5G")
             {
-                MessageBox.Show( SelectCombo);
+                mainViewModel.GetChartRepository().Mode = "5G";
+                mainViewModel.GetChartRepository().GeneratedSignal(null);
+                mainViewModel.SetInfoSGmode(SelectCombo);
+                mainViewModel.SetInfoSGFrequency("--");
+                mainViewModel.SetInfSGAmp("--");
+                FreTxt = "";
+                AmpTxt = "";
+                mainViewModel.IsSGModalOpen = false;
+
 
             }
-
-
-            MessageBox.Show(FreTxt + "Test"+ AmpTxt+ SelectCombo);
 
 
         }

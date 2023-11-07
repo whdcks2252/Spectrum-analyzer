@@ -20,45 +20,55 @@ namespace DabinSA.ViewModel.Commands
 
         private void Method(string param)
         {
-            if (param == "CenterFre")
-            {
-                mainViewModel.CurrentBT = param;
-                subBtMethods.CenterFre();
+           
+                if (param == "CenterFre")
+                {
+                    mainViewModel.CurrentBT = param;
+                    subBtMethods.CenterFre();
 
-            }
-            if (param == "Span")
-            {
-                mainViewModel.CurrentBT = param;
-                subBtMethods.CenterFre();
-            }
-            if (param == "FullSpan")
-            {
+                }
+                if (param == "Span")
+                {
+                    mainViewModel.CurrentBT = param;
+                    subBtMethods.CenterFre();
+                }
+                if (param == "FullSpan")
+                {
+                    mainViewModel.CenterFre = "3000";
+                    mainViewModel.SetInfoCenterFre("3000");
+                    mainViewModel.Span = "5998";
+                    mainViewModel.SetInfoSpan("5998");
+                    int span = int.Parse(mainViewModel.Span);
+                    int centerFre = Convert.ToInt32(mainViewModel.CenterFre);
+                    mainViewModel.StartFre = (centerFre - (span / 2)).ToString();
+                    mainViewModel.StopFre = (centerFre + (span / 2)).ToString();
 
-            }
-            if (param == "Attenuator")
-            {
-                mainViewModel.CurrentBT = param;
-                subBtMethods.CenterFre();
-            }
-            if (param == "Offset")
-            {
-                mainViewModel.CurrentBT = param;
-                subBtMethods.CenterFre();
-            }
-            if (param == "Select Marker")
-            {
+                }
+                if (param == "Attenuator")
+                {
+                    mainViewModel.CurrentBT = param;
+                    subBtMethods.CenterFre();
+                }
+                if (param == "Offset")
+                {
+                    mainViewModel.CurrentBT = param;
+                    subBtMethods.CenterFre();
+                }
+                if (param == "Select Marker")
+                {
+                mainViewModel.SelectMakerUI = Visibility.Visible;
+                mainViewModel.Stack=Visibility.Collapsed;
+                }
+                if (param == "Select Trace")
+                {
 
-            }
-            if (param == "Select Trace")
-            {
+                }
+                if (param == "Trace Type")
+                {
 
-            }
-            if (param == "Trace Type")
-            {
+                }
 
-            }
-
-
+            
         }
 
 

@@ -37,6 +37,22 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.77": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "OxyPlot.Core/2.1.2": {
         "type": "package",
         "compile": {
@@ -150,6 +166,28 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.77": {
+      "sha512": "MCu674ZETgU18EbxfwIlRpUPJ02YbZenLsMCXTkpeA7KUBpXfFaOUDlEO+7UWu5AFnUoydg+aQENJkuaZPheMQ==",
+      "type": "package",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.77",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/Design/Microsoft.Xaml.Behaviors.Design.dll",
+        "lib/net462/Design/Microsoft.Xaml.Behaviors.DesignTools.dll",
+        "lib/net462/Microsoft.Xaml.Behaviors.dll",
+        "lib/net462/Microsoft.Xaml.Behaviors.pdb",
+        "lib/net462/Microsoft.Xaml.Behaviors.xml",
+        "lib/net6.0-windows7.0/Design/Microsoft.Xaml.Behaviors.DesignTools.dll",
+        "lib/net6.0-windows7.0/Microsoft.Xaml.Behaviors.dll",
+        "lib/net6.0-windows7.0/Microsoft.Xaml.Behaviors.pdb",
+        "lib/net6.0-windows7.0/Microsoft.Xaml.Behaviors.xml",
+        "microsoft.xaml.behaviors.wpf.1.1.77.nupkg.sha512",
+        "microsoft.xaml.behaviors.wpf.nuspec",
+        "tools/Install.ps1"
+      ]
+    },
     "OxyPlot.Core/2.1.2": {
       "sha512": "/BuPL1Wa7ZhpKA2DBe72md+S8PgIHF+UP/NsKfO9BiheXnbns1/tqS7s2MWIR1xFy5i+PWVC67KziGPY48mNgA==",
       "type": "package",
@@ -212,30 +250,30 @@
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
       "Microsoft.Extensions.DependencyInjection >= 7.0.0",
-      "OxyPlot.Core >= 2.1.2",
+      "Microsoft.Xaml.Behaviors.Wpf >= 1.1.77",
       "OxyPlot.Wpf >= 2.1.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\whdck\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\seque\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\whdck\\Desktop\\스팩트럼\\DabinSA\\DabinSA\\DabinSA.csproj",
+      "projectUniqueName": "C:\\Users\\seque\\OneDrive\\바탕 화면\\Spectrum\\DabinSA\\DabinSA\\DabinSA.csproj",
       "projectName": "DabinSA",
-      "projectPath": "C:\\Users\\whdck\\Desktop\\스팩트럼\\DabinSA\\DabinSA\\DabinSA.csproj",
-      "packagesPath": "C:\\Users\\whdck\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\whdck\\Desktop\\스팩트럼\\DabinSA\\DabinSA\\obj\\",
+      "projectPath": "C:\\Users\\seque\\OneDrive\\바탕 화면\\Spectrum\\DabinSA\\DabinSA\\DabinSA.csproj",
+      "packagesPath": "C:\\Users\\seque\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\seque\\OneDrive\\바탕 화면\\Spectrum\\DabinSA\\DabinSA\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\whdck\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\seque\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0-windows"
@@ -264,9 +302,9 @@
             "target": "Package",
             "version": "[7.0.0, )"
           },
-          "OxyPlot.Core": {
+          "Microsoft.Xaml.Behaviors.Wpf": {
             "target": "Package",
-            "version": "[2.1.2, )"
+            "version": "[1.1.77, )"
           },
           "OxyPlot.Wpf": {
             "target": "Package",
@@ -292,7 +330,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

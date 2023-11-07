@@ -120,4 +120,76 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+    <Style x:Key="CheckBoxMarkerandTrace"
+           TargetType="CheckBox">
+
+        <Setter Property="Margin" Value="10,0,0,0"></Setter>
+        <Setter Property="Height" Value="40"></Setter>
+        <Setter Property="Width" Value="50"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+
+                    <Grid Margin="0,0,0,0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border x:Name="border"
+               Background="Black"
+               CornerRadius="6" 
+                      BorderThickness="3"
+                      BorderBrush="#8C8C8C"/>
+
+                        <TextBlock x:Name="SidebarRadioButtonMenuText"
+                     Grid.Row="0"
+                     Text="{TemplateBinding Property=Content}"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center"
+                     Foreground="White"
+                     FontSize="14"
+                     Margin="0,0,0,10" />
+
+                    </Grid>
+
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver"
+                   Value="True">
+
+                            <Setter Property="Background"
+                      TargetName="border"
+                      Value="#272727" />
+
+
+                        </Trigger>
+
+                        <Trigger Property="IsChecked"
+                   Value="True">
+
+                            <Setter Property="Background"
+                      TargetName="border"
+                      Value="#272727" />
+
+                            <Setter Property="BorderBrush"
+                      TargetName="border"
+                      Value="#FF4B8FFD" />
+
+                            <Setter Property="BorderThickness"
+                      TargetName="border"
+                      Value="3" />
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+
+    </Style>
 </ResourceDictionary>

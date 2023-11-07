@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="DabinSA.SelectMarker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DabinSA"
+             mc:Ignorable="d" 
+             d:DesignHeight="654.04" d:DesignWidth="250">
+    <Grid>
+        <StackPanel Margin="0,0,0,327">
+            <RadioButton Margin="0,0,0 10" GroupName="Marker" Style="{StaticResource MyButtonStyle}" Checked="RadioButton_Checked_1"   >Marker1 </RadioButton>
+            <RadioButton Margin="0,0,0 10" GroupName="Marker" Style="{StaticResource MyButtonStyle}" Checked="RadioButton_Checked"> Marker2 </RadioButton>
+            <RadioButton Margin="0,0,0 10" GroupName="Marker" Style="{StaticResource MyButtonStyle}" Checked="RadioButton_Checked_2"> Marker3</RadioButton>
+            <RadioButton Margin="0,0,0 10" GroupName="Marker" Style="{StaticResource MyButtonStyle}" Checked="RadioButton_Checked_3">Marker4 </RadioButton>
+        </StackPanel>
+    </Grid>
+</UserControl>

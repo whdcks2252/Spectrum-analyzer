@@ -60,6 +60,57 @@ namespace DabinSA
                 return calBT;
             }
         }
+
+        ICommand calBT2;
+        public ICommand CalBT2
+        {
+            get
+            {
+                if (calBT2 == null)
+                {
+                    calBT2 = new RelayCommand<object>(param => button3(), param => button3true(param));
+
+                }
+                return calBT2;
+            }
+        }
+
+        //Attenuator +/-버튼
+        private void button3()
+        {
+            if (Txt != "")
+            {
+                char startST = Txt[0];
+
+                if (startST=='+')
+                {
+                    Txt = "-" + Txt.Substring(1);
+                }
+                else if (startST == '-')
+                {
+                    Txt = "+" + Txt.Substring(1);
+                }
+                else
+                {
+                    Txt = "+" + Txt.Substring(1);
+                }
+            }
+                else
+                {
+                    Txt += "+";
+                }
+        }
+
+        private bool button3true(object param)
+        {
+            if(mainViewModel.SubMenuTxt == "Amplitude")
+                 return true;
+            else
+                return false;
+        }
+
+
+
         private void button2(object param)
         {
            
@@ -83,70 +134,130 @@ namespace DabinSA
 
             if (mainViewModel.CurrentBT == "CenterFre")
             {
-                if (Txt.Length < 1)
+                try
                 {
-                    MessageBox.Show("값을 입력 해 주세요");
-                    return;
-                }
-                int tx = int.Parse(Txt);
+                    int span = int.Parse(mainViewModel.Span);
+                    int centerFre = int.Parse(Txt);
+                    if ((centerFre - (span / 2))<1|| ((centerFre + (span / 2)) > 6000))
+                    {
+                        Txt = "";
+                        throw new Exception();
+                    }
+                   
 
-                mainViewModel.IsCalculatorModalOpen = false;
-                mainViewModel.CenterFre = tx.ToString();
-                mainViewModel.SetInfoCenterFre(tx.ToString());
-                calFre(tx);
+                    if (Txt.Length < 1)
+                    {
+                        MessageBox.Show("값을 입력 해 주세요");
+                        return;
+                    }
+                    int tx = int.Parse(Txt);
+
+                    mainViewModel.IsCalculatorModalOpen = false;
+                    mainViewModel.CenterFre = tx.ToString();
+                    mainViewModel.SetInfoCenterFre(tx.ToString());
+                    calFre(tx);
+                }catch(Exception ex)
+                {
+                    MessageBox.Show("범위가 넘어 갔습니다");
+                }
 
             }
+
             if (mainViewModel.CurrentBT == "Span")
             {
-                if (Txt.Length < 1)
+                try
                 {
-                    MessageBox.Show("값을 입력 해 주세요");
-                    return;
-                }
-                int tx = int.Parse(Txt);
+                    int span = int.Parse(Txt);
+                    int centerFre = Convert.ToInt32(mainViewModel.CenterFre);
+                   
+                    if ((centerFre - (span / 2)) < 1 || ((centerFre + (span / 2)) > 6000))
+                    {
+                        Txt = "";
+                        throw new Exception();
+                    }
 
-                mainViewModel.IsCalculatorModalOpen = false;
-                mainViewModel.Span = tx.ToString();
-                mainViewModel.SetInfoSpan(tx.ToString());
-                calSapn(tx);
+                    if (Txt.Length < 1)
+                    {
+                        MessageBox.Show("값을 입력 해 주세요");
+                        return;
+                    }
+                    int tx = int.Parse(Txt);
+
+                    mainViewModel.IsCalculatorModalOpen = false;
+                    mainViewModel.Span = tx.ToString();
+                    mainViewModel.SetInfoSpan(tx.ToString());
+                    calSapn(tx);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("범위가 넘어 갔습니다");
+                }
             }
 
             if(mainViewModel.CurrentBT=="Attenuator")
             {
-                if (Txt.Length < 1)
+                try
                 {
-                    MessageBox.Show("값을 입력 해 주세요");
-                    return;
-                }
-                int amp = int.Parse(Txt);
+                    int attenuator = int.Parse(Txt);
+                    int offset = Convert.ToInt32(mainViewModel.Offset);
 
-                int offset = int.Parse(mainViewModel.Offset);
-                mainViewModel.IsCalculatorModalOpen = false;
-                mainViewModel.Attenuator = amp.ToString();
-                mainViewModel.SetInfoAmp(amp.ToString());
-                mainViewModel.RangeStart = -100+ amp + offset;
-                mainViewModel.RangeStop = -80+ amp + offset;
-                
+                    if ((-100+attenuator + offset) >0|| (-100 + attenuator + offset)<-140)
+                    {
+                        Txt = "";
+                        throw new Exception();
+                    }
+
+                    if (Txt.Length < 1)
+                    {
+                        MessageBox.Show("값을 입력 해 주세요");
+                        return;
+                    }
+                    int amp = int.Parse(Txt);
+
+                    mainViewModel.IsCalculatorModalOpen = false;
+                    mainViewModel.Attenuator = amp.ToString();
+                    mainViewModel.SetInfoAmp(amp.ToString());
+                    mainViewModel.RangeStart = -100 + amp + offset;
+                    mainViewModel.RangeStop = -80 + +amp + offset;
+                }
+                catch
+                {
+                    MessageBox.Show("범위가 넘어 갔습니다");
+
+                }
             }
 
             if(mainViewModel.CurrentBT == "Offset")
             {
-                if (Txt.Length < 1)
+                try
                 {
-                    MessageBox.Show("값을 입력 해 주세요");
-                    return;
+                    int offset = int.Parse(Txt);
+                    int attenuator = int.Parse(mainViewModel.Attenuator);
+
+                    if ((-100 + attenuator + offset) > 10 || (-100 + attenuator + offset) < -140)
+                    {
+                        Txt = "";
+                        throw new Exception();
+                    }
+
+                    if (Txt.Length < 1)
+                    {
+                        MessageBox.Show("값을 입력 해 주세요");
+                        return;
+                    }
+
+
+                    mainViewModel.IsCalculatorModalOpen = false;
+                    mainViewModel.RangeStart = -100 + attenuator + offset;
+                    mainViewModel.RangeStop = -80 + attenuator + offset;
+                    mainViewModel.Offset = offset.ToString();
+                    mainViewModel.SetInfoOffset(offset.ToString());
                 }
+                catch
+                {
+                    MessageBox.Show("범위가 넘어 갔습니다");
 
-                int offset = int.Parse(Txt);
-               int amp = int.Parse(mainViewModel.Attenuator);
-
-                mainViewModel.IsCalculatorModalOpen = false;
-                mainViewModel.RangeStart = -100 + amp + offset;
-                mainViewModel.RangeStop = -80 + amp + offset;
-                mainViewModel.Offset = offset.ToString();
-                mainViewModel.SetInfoOffset(offset.ToString());
-
-
+                }
 
             }
 
