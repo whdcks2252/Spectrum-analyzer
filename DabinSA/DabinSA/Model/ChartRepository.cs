@@ -51,7 +51,7 @@ namespace DabinSA.Model
                         ChartDataRepository[(i-50)+j].Value = random.Next(-23, -18);
 
                     }
-                    i += 50;
+                    i += 49;
                     continue;
                 }
 

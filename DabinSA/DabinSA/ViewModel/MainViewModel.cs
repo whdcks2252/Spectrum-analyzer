@@ -117,11 +117,13 @@ namespace DabinSA.ViewModel
 
             SelectMakerUI = Visibility.Collapsed;
             MakerViewModel = new SelectMakerViewModel(this);
+            MarkerName = "--";
+            MarkerNum = "--";
         }
 
         public void SetPlotModel()
         {
-            
+
             //x축 생성
             PlotModelmp.Axes.Add(new LinearAxis
             {
@@ -129,7 +131,7 @@ namespace DabinSA.ViewModel
                 MajorGridlineStyle = LineStyle.Solid,
                 MajorGridlineColor = OxyColors.White,
                 IsZoomEnabled = false,
-            }) ;
+            }); 
             //y축 생성
             PlotModelmp.Axes.Add(new LinearAxis
             {
@@ -139,6 +141,7 @@ namespace DabinSA.ViewModel
                 MajorGridlineStyle = LineStyle.Solid,
                 MajorGridlineColor = OxyColors.White,
                 IsZoomEnabled = false,
+                FontSize = 15,
                 Maximum = 10,
 
             }) ;
@@ -166,22 +169,51 @@ namespace DabinSA.ViewModel
 
         private void SetMarker()
         {
+            List<ChartModel> chartModels = chartRepository.getDatas();
             PlotModelmp.Annotations.Clear();
             foreach (Marker marker in markers)
             {
                 if (marker.CheckMarker == true)
                 {
+                    marker.Y = chartModels[marker.X].Value;
                     var annotation = new LineAnnotation();
                     annotation.Color = OxyColors.Red;
                     annotation.LineStyle = LineStyle.Solid;
                     annotation.StrokeThickness = 1;
                     annotation.X = marker.X;
+                    annotation.Y = marker.Y;
                     annotation.Type = LineAnnotationType.Vertical;
-                    annotation.Text = marker.Select.ToString();
                     annotation.TextColor = OxyColors.Yellow;
 
+                    var pointanotation = new PointAnnotation();
+                    pointanotation.Size = 10;
+                    pointanotation.Shape = MarkerType.Diamond;
+                    pointanotation.TextColor= OxyColors.Yellow;
+                    pointanotation.TextVerticalAlignment = OxyPlot.VerticalAlignment.Middle;
+                    pointanotation.Text = marker.Y.ToString();
+                    pointanotation.X = marker.X;
+                    pointanotation.Y = marker.Y;
+                    pointanotation.Fill = OxyColors.Red;
 
+                    var pointanotation2 = new PointAnnotation();
+                    pointanotation2.TextMargin = -80;
+                    pointanotation2.Shape = MarkerType.None;
+                    pointanotation2.Size = 50;
+                    pointanotation2.TextColor = OxyColors.White;
+                   // pointanotation2.TextVerticalAlignment = OxyPlot.VerticalAlignment.Middle;
+                    pointanotation2.Text = "M" + (markers.IndexOf(marker) + 1).ToString();
+                    pointanotation2.X = marker.X;
+                    pointanotation2.Y = marker.Y;
+
+                    if (marker.SelectMarker)
+                    {
+                        MarkerName = "M"+(markers.IndexOf(marker) + 1).ToString()+" : ";
+                        MarkerNum = marker.Y.ToString() ;
+                    }
                     PlotModelmp.Annotations.Add(annotation);
+                    PlotModelmp.Annotations.Add(pointanotation);
+                    PlotModelmp.Annotations.Add(pointanotation2);
+
                 }
             }
         }
@@ -526,6 +558,7 @@ namespace DabinSA.ViewModel
         private int markFlag4;
         public void CreateMarkerTrace(object parameter)
         {
+            List<ChartModel> chartModels = chartRepository.getDatas();
 
             if (parameter.ToString() == "M1")
             {
@@ -533,11 +566,16 @@ namespace DabinSA.ViewModel
                 {
                     markers[0].CheckMarker = true;
                     markers[0].Select = 1;
+                    markers[0].X = int.Parse(CenterFre);
+                    markers[0].Y = chartModels[markers[0].X].Value;
 
                 }
                 else if (M1 == false)
                 {
                     markers[0].CheckMarker = false;
+                    markers[0].X = 0;
+                    MarkerName = "--";
+                    MarkerNum = "--";
 
                 }
 
@@ -548,12 +586,18 @@ namespace DabinSA.ViewModel
                 {
                     markers[1].CheckMarker = true;
                     markers[1].Select = 2;
+                    markers[1].X = int.Parse(CenterFre);
+                    markers[1].Y = chartModels[markers[0].X].Value;
+
 
                 }
                 else if (M2 == false)
                 {
 
                     markers[1].CheckMarker = false;
+                    markers[1].X = 0;
+                    MarkerName = "--";
+                    MarkerNum = "--";
 
                 }
             }
@@ -563,12 +607,18 @@ namespace DabinSA.ViewModel
                 {
                     markers[2].CheckMarker = true;
                     markers[2].Select = 3;
+                    markers[2].X = int.Parse(CenterFre);
+                    markers[2].Y = chartModels[markers[0].X].Value;
+
 
                 }
                 else if (M3 == false)
                 {
 
                     markers[2].CheckMarker = false;
+                    markers[2].X = 0;
+                    MarkerName = "--";
+                    MarkerNum = "--";
 
                 }
             }
@@ -578,12 +628,17 @@ namespace DabinSA.ViewModel
                 {
                     markers[3].CheckMarker = true;
                     markers[3].Select = 4;
+                    markers[3].X = int.Parse(CenterFre);
+                    markers[3].Y = chartModels[markers[0].X].Value;
 
                 }
                 else if (M4 == false)
                 {
 
                     markers[3].CheckMarker = false;
+                    markers[3].X = 0;
+                    MarkerName = "--";
+                    MarkerNum = "--";
 
                 }
             }
@@ -696,6 +751,27 @@ namespace DabinSA.ViewModel
             {
                 makerViewModel = value;
                 OpPropertyChanged("MakerViewModel");
+            }
+        }
+        private string markerName;
+        public string MarkerName
+        {
+            get { return markerName; }
+            set
+            {
+                markerName = value;
+                OpPropertyChanged("MarkerName");
+            }
+        }
+        private string markerNum;
+
+        public string MarkerNum
+        {
+            get { return markerNum; }
+            set
+            {
+                markerNum = value;
+                OpPropertyChanged("MarkerNum");
             }
         }
         private Visibility selectMakerUI { get; set; }

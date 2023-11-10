@@ -34,12 +34,21 @@
         </Grid>
         
         <Grid Grid.Row="1">
-            <StackPanel Orientation="Horizontal">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+             <StackPanel Orientation="Horizontal">
                 <CheckBox Style="{StaticResource CheckBoxMarkerandTrace}" IsChecked="{Binding M1,UpdateSourceTrigger=PropertyChanged}" Command="{Binding MarkerCommand}" CommandParameter="M1">M1</CheckBox>
                 <CheckBox Style="{StaticResource CheckBoxMarkerandTrace}" IsChecked="{Binding M2,UpdateSourceTrigger=PropertyChanged}" Command="{Binding MarkerCommand}" CommandParameter="M2">M2</CheckBox>
                 <CheckBox Style="{StaticResource CheckBoxMarkerandTrace}" IsChecked="{Binding M3,UpdateSourceTrigger=PropertyChanged}" Command="{Binding MarkerCommand}" CommandParameter="M3">M3</CheckBox>
                 <CheckBox Style="{StaticResource CheckBoxMarkerandTrace}" IsChecked="{Binding M4,UpdateSourceTrigger=PropertyChanged}" Command="{Binding MarkerCommand}" CommandParameter="M4">M4</CheckBox>
                 <CheckBox Style="{StaticResource CheckBoxMarkerandTrace}">T1</CheckBox>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <TextBlock Text="{Binding MarkerName,UpdateSourceTrigger=PropertyChanged}" Margin="10,10,0,10" TextAlignment="Center"  Foreground="White" FontSize="20"/>
+                <TextBlock Text="{Binding MarkerNum,UpdateSourceTrigger=PropertyChanged}" Margin="10,10,0,10" TextAlignment="Center" Foreground="White" FontSize="20"/>
+                <TextBlock Margin="5,18,0,10" TextAlignment="Center" Foreground="White" FontSize="12"> (dBm)</TextBlock>
             </StackPanel>
         </Grid>
         
@@ -54,7 +63,7 @@
                     <local:OxyPlotBehavior OxyCommand="{Binding OxyCommand}"/>
                 </b:Interaction.Behaviors>
             </oxy:PlotView>
-
+            <TextBlock Margin="10,10,1235,550" FontSize="15" Foreground="White">(dBm)</TextBlock>
 
             <Grid Margin="40,-30,0,0" Grid.Row="1">
                     <Grid.ColumnDefinitions>

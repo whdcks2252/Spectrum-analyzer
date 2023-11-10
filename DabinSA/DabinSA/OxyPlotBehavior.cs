@@ -1,6 +1,7 @@
 ﻿using DabinSA.ViewModel;
 using Microsoft.Xaml.Behaviors;
 using OxyPlot;
+using OxyPlot.Axes;
 using OxyPlot.Wpf;
 using System;
 using System.Collections.Generic;
@@ -31,11 +32,15 @@ namespace DabinSA
             var plot = sender as PlotView;
             if (plot == null) return;
             var xAxis = plot.ActualModel.Axes[0];
+            var yAxis = plot.ActualModel.Axes[1];
+
             var dataPoint = new ScreenPoint((int)e.GetPosition(null).X, (int)e.GetPosition(null).Y);
             double x = xAxis.InverseTransform(dataPoint.X);
+            double y = yAxis.InverseTransform(dataPoint.Y);
 
             var mousePoint = e.GetPosition(null);
             MainViewModel.markers[0].X = (int)x;
+            MainViewModel.markers[0].Y = (int)y;
 
             }
             if (MainViewModel.markers[1].SelectMarker)
@@ -43,11 +48,15 @@ namespace DabinSA
                 var plot = sender as PlotView;
                 if (plot == null) return;
                 var xAxis = plot.ActualModel.Axes[0];
+                var yAxis = plot.ActualModel.Axes[1];
+
                 var dataPoint = new ScreenPoint((int)e.GetPosition(null).X, (int)e.GetPosition(null).Y);
                 double x = xAxis.InverseTransform(dataPoint.X);
+                double y = yAxis.InverseTransform(dataPoint.Y);
 
                 var mousePoint = e.GetPosition(null);
                 MainViewModel.markers[1].X = (int)x;
+                MainViewModel.markers[1].Y = (int)y;
 
             }
             if (MainViewModel.markers[2].SelectMarker)
@@ -55,11 +64,15 @@ namespace DabinSA
                 var plot = sender as PlotView;
                 if (plot == null) return;
                 var xAxis = plot.ActualModel.Axes[0];
+                var yAxis = plot.ActualModel.Axes[1];
+
                 var dataPoint = new ScreenPoint((int)e.GetPosition(null).X, (int)e.GetPosition(null).Y);
                 double x = xAxis.InverseTransform(dataPoint.X);
+                double y = yAxis.InverseTransform(dataPoint.Y);
 
                 var mousePoint = e.GetPosition(null);
                 MainViewModel.markers[2].X = (int)x;
+                MainViewModel.markers[2].Y = (int)y;
 
             }
             if (MainViewModel.markers[3].SelectMarker)
@@ -67,11 +80,16 @@ namespace DabinSA
                 var plot = sender as PlotView;
                 if (plot == null) return;
                 var xAxis = plot.ActualModel.Axes[0];
+                var yAxis = plot.ActualModel.Axes[1];
+
                 var dataPoint = new ScreenPoint((int)e.GetPosition(null).X, (int)e.GetPosition(null).Y);
                 double x = xAxis.InverseTransform(dataPoint.X);
+                double y = yAxis.InverseTransform(dataPoint.Y);
 
                 var mousePoint = e.GetPosition(null);
                 MainViewModel.markers[3].X = (int)x;
+                MainViewModel.markers[3].Y = (int)y;
+
 
             }
 

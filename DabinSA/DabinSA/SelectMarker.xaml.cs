@@ -34,6 +34,8 @@ namespace DabinSA
 
         private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
+            mainViewModel.MarkerName = "--";
+            mainViewModel.MarkerNum = "--";
             MainViewModel.markers[0].SelectMarker = true;
             MainViewModel.markers[1].SelectMarker = false;
             MainViewModel.markers[2].SelectMarker = false;
@@ -43,6 +45,8 @@ namespace DabinSA
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
+            mainViewModel.MarkerName = "--";
+            mainViewModel.MarkerNum = "--";
             MainViewModel.markers[0].SelectMarker = false;
             MainViewModel.markers[1].SelectMarker = true;
             MainViewModel.markers[2].SelectMarker = false;
@@ -51,6 +55,8 @@ namespace DabinSA
 
         private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
         {
+            mainViewModel.MarkerName = "--";
+            mainViewModel.MarkerNum = "--";
             MainViewModel.markers[0].SelectMarker = false;
             MainViewModel.markers[1].SelectMarker = false;
             MainViewModel.markers[2].SelectMarker = true;
@@ -59,6 +65,8 @@ namespace DabinSA
 
         private void RadioButton_Checked_3(object sender, RoutedEventArgs e)
         {
+            mainViewModel.MarkerName = "--";
+            mainViewModel.MarkerNum = "--";
             MainViewModel.markers[0].SelectMarker = false;
             MainViewModel.markers[1].SelectMarker = false;
             MainViewModel.markers[2].SelectMarker = false;
