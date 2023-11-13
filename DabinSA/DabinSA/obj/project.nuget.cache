@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "tZokymXWjBTQKeHjzd9NfpU/uIUfL0owR3D3EjWkb40nm9cFI0KQ37ApRshovUnyoq4Z6pauE/ApajmPHoiWig==",
+  "dgSpecHash": "CWGQSDhxKbjos9vZPqtoXGWY1tO8k5St9Jg/jEf8LDZVFUUJdzQi+ugzspFuQLIs1qpPlTuS09g0SPRzXi2ZvQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\seque\\OneDrive\\바탕 화면\\Spectrum\\DabinSA\\DabinSA\\DabinSA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\seque\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\seque\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\seque\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.77\\microsoft.xaml.behaviors.wpf.1.1.77.nupkg.sha512",
+    "C:\\Users\\seque\\.nuget\\packages\\mqttnet\\3.1.2\\mqttnet.3.1.2.nupkg.sha512",
     "C:\\Users\\seque\\.nuget\\packages\\oxyplot.core\\2.1.2\\oxyplot.core.2.1.2.nupkg.sha512",
     "C:\\Users\\seque\\.nuget\\packages\\oxyplot.wpf\\2.1.2\\oxyplot.wpf.2.1.2.nupkg.sha512",
     "C:\\Users\\seque\\.nuget\\packages\\oxyplot.wpf.shared\\2.1.2\\oxyplot.wpf.shared.2.1.2.nupkg.sha512"

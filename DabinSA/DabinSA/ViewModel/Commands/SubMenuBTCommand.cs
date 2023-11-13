@@ -31,6 +31,7 @@ namespace DabinSA.ViewModel.Commands
                 {
                     mainViewModel.CurrentBT = param;
                     subBtMethods.CenterFre();
+
                 }
                 if (param == "FullSpan")
                 {
@@ -43,8 +44,8 @@ namespace DabinSA.ViewModel.Commands
                     mainViewModel.StartFre = (centerFre - (span / 2)).ToString();
                     mainViewModel.StopFre = (centerFre + (span / 2)).ToString();
 
-                }
-                if (param == "Attenuator")
+            }
+            if (param == "Attenuator")
                 {
                     mainViewModel.CurrentBT = param;
                     subBtMethods.CenterFre();

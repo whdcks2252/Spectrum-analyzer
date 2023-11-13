@@ -1,4 +1,5 @@
 ﻿using DabinSA.Model;
+using DabinSA.Mqtts;
 using DabinSA.ViewModel.Commands;
 using DabinSA.ViewModel.ViewSouce;
 using OxyPlot;
@@ -56,6 +57,8 @@ namespace DabinSA.ViewModel
         private ICommand chageSASubMenu;
         private ICommand markerCommand;
         private PlotModel plotModelImp;
+        private PlotModel plotModelImp2;
+
         private SubViewSouce subViewSouce = new SubViewSouce();
         private ChartRepository chartRepository;
         public static List<Marker> markers= new List<Marker>();
@@ -66,10 +69,12 @@ namespace DabinSA.ViewModel
         private bool m4;
         private bool t1;
 
+        public Mqtt mqtt;
 
         public MainViewModel(ChartRepository chartRepository)
-        { this.chartRepository= chartRepository;
-           
+        { 
+            this.chartRepository= chartRepository;
+            mqtt = new Mqtt(this);
             //data set
             CenterFre = "3650";
             StartFre = "3575";
@@ -79,8 +84,9 @@ namespace DabinSA.ViewModel
             Span = "150";
 
             PlotModelmp = new PlotModel();
+            PlotModelmp2 = new PlotModel();
 
-            for(int i=0; i < 4; i++)
+            for (int i=0; i < 4; i++)
             {
                 Marker marker1 = new Marker() { X=  int.Parse(CenterFre),Select=1};
                 Marker marker2 = new Marker() { X = int.Parse(CenterFre), Select = 2 };
@@ -92,9 +98,13 @@ namespace DabinSA.ViewModel
                 markers.Add(marker4);
             }
 
+            Chart2 = Visibility.Collapsed;
+            SetPlotModel();
+            SetPlotModel2();
 
-            SetPlotModel();            
             task();
+            //mqtt연결
+            task2();
 
             CalViewModel = new CalViewModel(this);
             SGViewModel = new SGViewModel(this);
@@ -119,6 +129,8 @@ namespace DabinSA.ViewModel
             MakerViewModel = new SelectMakerViewModel(this);
             MarkerName = "--";
             MarkerNum = "--";
+
+           
         }
 
         public void SetPlotModel()
@@ -143,29 +155,67 @@ namespace DabinSA.ViewModel
                 IsZoomEnabled = false,
                 FontSize = 15,
                 Maximum = 10,
-
             }) ;
 
             PlotModelmp.PlotAreaBorderColor = OxyColors.White;
         }
-        private async Task task()
+
+        public void SetPlotModel2()
         {
 
+            //x축 생성
+            PlotModelmp2.Axes.Add(new LinearAxis
+            {
+                Position = AxisPosition.Bottom,
+                MajorGridlineStyle = LineStyle.Solid,
+                MajorGridlineColor = OxyColors.White,
+                IsZoomEnabled = false,
+                Maximum = 1000,
+                Minimum = 0,
+               
+            });
+
+            //y축 생성
+            PlotModelmp2.Axes.Add(new LinearAxis
+            {
+                Position = AxisPosition.Left,
+                TextColor = OxyColors.White,
+                Title = "value(dBm)",
+                MajorGridlineStyle = LineStyle.Solid,
+                MajorGridlineColor = OxyColors.White,
+                IsZoomEnabled = false,
+                FontSize = 15,
+                Maximum = 0,
+                Minimum = -120
+
+            });
+
+            PlotModelmp2.PlotAreaBorderColor = OxyColors.White;
+        }
+
+        private async Task task()
+        {
             await Task.Run(async () =>
             {
-
                 while (true)
                 {
-                    
                     await Task.Delay(100);
                     SetMarker();
                     chartRepository.save(RangeStart,RangeStop);
                     Setchart();
                     ChageTime();
                 }
-
             });
         }
+
+
+        private async Task task2()
+        {
+            await mqtt.recive();
+            await mqtt.recive2();
+            await mqtt.recive3();
+        }
+
 
         private void SetMarker()
         {
@@ -250,6 +300,30 @@ namespace DabinSA.ViewModel
             PlotModelmp.Series.Add(lineSeries);
             PlotModelmp.InvalidatePlot(true);// 바인딩 즉시업데이트 트리거
         }
+        public void Setchart2(ref List<float> recvSpectrumList)
+        {
+
+            PlotModelmp2.Series.Clear();
+
+            var lineSeries = new LineSeries
+            {
+                Color = OxyColors.DeepPink,
+
+            };
+
+
+            Console.WriteLine(recvSpectrumList[0]);   
+            for (int i = 0; i < recvSpectrumList.Count; i++)
+            {
+
+                lineSeries.Points.Add(new DataPoint(i, recvSpectrumList[i]));
+
+            }
+
+
+            PlotModelmp2.Series.Add(lineSeries);
+            PlotModelmp2.InvalidatePlot(true);
+        }
 
         private void ChageTime()
         {
@@ -264,6 +338,8 @@ namespace DabinSA.ViewModel
         }
 
         public PlotModel PlotModelmp { get; set; }
+        public PlotModel PlotModelmp2 { get; set; }
+
         public CalViewModel CalViewModel { get; set; }
         public SGViewModel SGViewModel { get; set; }
 
@@ -645,6 +721,15 @@ namespace DabinSA.ViewModel
             if (parameter.ToString() == "T1")
             {
 
+                if (T1 == true)
+                {
+                    mqtt.RequestSpectrum();
+                    Chart1 = Visibility.Collapsed; Chart2 = Visibility.Visible;
+                }
+                else if (T1 == false)
+                {
+                    Chart1 = Visibility.Visible; Chart2 = Visibility.Collapsed;
+                }
             }
 
            
@@ -809,5 +894,34 @@ namespace DabinSA.ViewModel
             Stack = System.Windows.Visibility.Visible;
         }
 
+        private Visibility chart1;
+
+        public Visibility Chart1
+        {
+            get { return chart1; }
+            set
+            {
+                if (chart1 != value)
+                {
+                    chart1 = value;
+                    OpPropertyChanged("Chart1");
+                }
+            }
+        }
+
+        private Visibility chart2;
+
+        public Visibility Chart2
+        {
+            get { return chart2; }
+            set
+            {
+                if (chart2 != value)
+                {
+                    chart2 = value;
+                    OpPropertyChanged("Chart2");
+                }
+            }
+        }
     }
 }

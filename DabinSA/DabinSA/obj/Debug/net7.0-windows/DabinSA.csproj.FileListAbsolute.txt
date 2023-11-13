@@ -109,3 +109,4 @@ C:\Users\seque\OneDrive\바탕 화면\Spectrum\DabinSA\DabinSA\obj\Debug\net7.0-
 C:\Users\seque\OneDrive\바탕 화면\Spectrum\DabinSA\DabinSA\bin\Debug\net7.0-windows\Microsoft.Xaml.Behaviors.dll
 C:\Users\seque\OneDrive\바탕 화면\Spectrum\DabinSA\DabinSA\obj\Debug\net7.0-windows\SelectMarker.g.cs
 C:\Users\seque\OneDrive\바탕 화면\Spectrum\DabinSA\DabinSA\obj\Debug\net7.0-windows\SelectMarker.baml
+C:\Users\seque\OneDrive\바탕 화면\Spectrum\DabinSA\DabinSA\bin\Debug\net7.0-windows\MQTTnet.dll

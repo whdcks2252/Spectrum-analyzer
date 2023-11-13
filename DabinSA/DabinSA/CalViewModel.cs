@@ -156,7 +156,10 @@ namespace DabinSA
                     mainViewModel.CenterFre = tx.ToString();
                     mainViewModel.SetInfoCenterFre(tx.ToString());
                     calFre(tx);
-                }catch(Exception ex)
+                    mainViewModel.mqtt.RequestSpectrum();
+
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show("범위가 넘어 갔습니다");
                 }
@@ -187,6 +190,8 @@ namespace DabinSA
                     mainViewModel.Span = tx.ToString();
                     mainViewModel.SetInfoSpan(tx.ToString());
                     calSapn(tx);
+                    mainViewModel.mqtt.RequestSpectrum();
+
                 }
                 catch (Exception ex)
                 {
@@ -219,6 +224,8 @@ namespace DabinSA
                     mainViewModel.SetInfoAmp(amp.ToString());
                     mainViewModel.RangeStart = -100 + amp + offset;
                     mainViewModel.RangeStop = -80 + +amp + offset;
+                    mainViewModel.mqtt.RequestSpectrum();
+
                 }
                 catch
                 {
@@ -252,6 +259,8 @@ namespace DabinSA
                     mainViewModel.RangeStop = -80 + attenuator + offset;
                     mainViewModel.Offset = offset.ToString();
                     mainViewModel.SetInfoOffset(offset.ToString());
+                    mainViewModel.mqtt.RequestSpectrum();
+
                 }
                 catch
                 {
@@ -260,7 +269,6 @@ namespace DabinSA
                 }
 
             }
-
 
             Txt = "";
         }
