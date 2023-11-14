@@ -224,7 +224,7 @@ namespace DabinSA.Mqtts
 
             queue.Enqueue("0x04 0x00");
             queue.Enqueue(double.Parse(mainViewModel.CenterFre+"000000"));
-            queue.Enqueue(int.Parse(mainViewModel.Span+"000000"));
+            queue.Enqueue(double.Parse(mainViewModel.Span+"000000"));
             queue.Enqueue("10");
             queue.Enqueue("10");
             queue.Enqueue("0");

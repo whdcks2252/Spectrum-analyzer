@@ -813,7 +813,7 @@ namespace DabinSA.ViewModel
         }
         public void SetInfSGAmp(string st)
         {
-            SGAmp = "SGAttenuator : " + st + " (dB)";
+            SGAmp = "SGAmplitude : " + st + " (dB)";
 
         }
         private Visibility stack { get; set; }

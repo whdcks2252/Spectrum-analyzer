@@ -30,7 +30,7 @@
         <TextBox TextAlignment="Right" FontSize="15" Grid.ColumnSpan="3" Margin="98,70,118,14" Grid.Row="1" Text="{Binding FreTxt, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SGFreTrue}" />
         <TextBlock FontSize="10" Grid.Column="2" Margin="12,73,68,8" Grid.Row="1">(MHz)</TextBlock>
 
-        <TextBlock  FontSize="15" Margin="10,10,32,66" Grid.Row="2" >Attenuator :</TextBlock>
+        <TextBlock  FontSize="15" Margin="10,10,32,66" Grid.Row="2" >Amplitude :</TextBlock>
         <TextBox TextAlignment="Right" FontSize="15" Grid.ColumnSpan="3" Margin="98,10,118,73" Grid.Row="2" Text="{Binding AmpTxt, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding SGAmpTrue}"/>
         <TextBlock FontSize="10" Grid.Column="2" Margin="12,14,75,73" Grid.Row="2">(dB)</TextBlock>
 
